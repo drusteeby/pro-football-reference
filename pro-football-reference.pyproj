@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{31d74d27-0bf1-48c4-b214-efcad2c31b5e}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>links_to_SQL.py</StartupFile>
+    <StartupFile>stats_to_SQL.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -22,10 +22,14 @@
     <Compile Include="links_to_SQL.py" />
     <Compile Include="NFL_team_links.py" />
     <Compile Include="stats_to_SQL.py" />
+    <Compile Include="classes\SingleGameData.py" />
     <Compile Include="update_stats.py" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.7" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="classes\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>

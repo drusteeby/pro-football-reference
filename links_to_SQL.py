@@ -39,7 +39,7 @@ for year in range(len(teams)):
      teams[year][0] = teams[year][0].replace('2014','2002')
 
 
-for i in (range(2002,2017)):
+for i in (range(2016,2017)):
     new_year = i + 1
     i = str(i)
     new_year = str(new_year)
