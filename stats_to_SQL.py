@@ -113,6 +113,29 @@ while not webpages.empty():
             else:
                 home = 1
 
+        gameData = SingleGameData.SingleGameData()
+
+        gameData.addStat("team_id",teams2[pageIndex][3])
+        gameData.addStat("link_id",teams2[pageIndex][0])
+        gameData.addStat("opp_id",opp_id)
+        gameData.addStat("Week",week)
+        gameData.addStat("Year",teams2[pageIndex][2])
+        gameData.addStat("Day",stats[1][1])
+        gameData.addStat("Win",win)
+        gameData.addStat("Tot_Wins",tot_wins)
+        gameData.addStat("Tot_Loss",tot_loss)
+        gameData.addStat("Home",home)
+        gameData.addStat("Points_off",stats[9][1])
+        gameData.addStat("Points_def",stats[10][1])
+        gameData.addStat("Yards_off",stats[12][1])
+        gameData.addStat("Pass_Yards_off",stats[13][1])
+        gameData.addStat("Rush_Yards_off",stats[14][1])
+        gameData.addStat("Yards_def",stats[17][1])
+        gameData.addStat("Pass_Yards_def",stats[18][1])
+        gameData.addStat("Rush_Yards_def",stats[19][1])
+        gameData.addStat("TO_off",stats[15][1])
+        gameData.addStat("TO_def",stats[20][1])
+
         teamId = teams2[pageIndex][3]
         linkId = teams2[pageIndex][0]
         year = teams2[pageIndex][2]
@@ -122,14 +145,15 @@ while not webpages.empty():
         totalYardsFor = stats[12][1]
         passingYardsFor = stats[13][1]
         rusingYardsFor = stats[14][1]
+
         totalYardsAgainst = stats[17][1]
         passingYardsAgainst = stats[18][1]
         rusingYardsAgainst = stats[19][1]
         turnovers = stats[15][1]
         takeaways = stats[20][1]
 
-
-        cur.execute('''INSERT OR IGNORE INTO Stats (team_id, link_id,opp_id,Week, Year, Day,Win,
+        sql = gameData.generateSQL()
+        originalSql = '''INSERT OR IGNORE INTO Stats (team_id, link_id,opp_id,Week, Year, Day,Win,
         Tot_Wins, Tot_Loss, Home, Points_off, Points_def,Yards_off,Pass_Yards_off,Rush_Yards_off,Yards_def,Pass_Yards_def,Rush_Yards_def,TO_off,TO_def)
         Values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''',(
             teamId, linkId, opp_id, 
@@ -138,7 +162,9 @@ while not webpages.empty():
             pointsFor, pointsAgainst,
             totalYardsFor, passingYardsFor, rusingYardsFor, 
             totalYardsAgainst, passingYardsAgainst, rusingYardsAgainst, 
-            turnovers, takeaways))
+            turnovers, takeaways);           
+
+        cur.execute(sql)
         conn.commit()
     pageIndex = pageIndex + 1;
     webpages.task_done()

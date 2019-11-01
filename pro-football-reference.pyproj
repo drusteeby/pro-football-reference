@@ -23,6 +23,7 @@
     <Compile Include="NFL_team_links.py" />
     <Compile Include="stats_to_SQL.py" />
     <Compile Include="classes\SingleGameData.py" />
+    <Compile Include="tests\generateSQLTests.py" />
     <Compile Include="update_stats.py" />
   </ItemGroup>
   <ItemGroup>
@@ -30,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="classes\" />
+    <Folder Include="tests\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>
