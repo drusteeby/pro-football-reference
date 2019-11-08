@@ -1,4 +1,5 @@
-﻿from classes import SingleGameData
+﻿import SingleGameData
+import SQLGenerator
 
 gameData = SingleGameData.SingleGameData()
 
@@ -7,9 +8,11 @@ gameData.addStat("test2", "2")
 gameData.addStat("test3", "3")
 gameData.addStat("test4", "4")
 
-sql = gameData.generateSQL()
+generator = SQLGenerator.SQLGenerator()
 
-expected = '''INSERT OR IGNORE INTO Stats (test1, test2, test3, test4) VALUES (1, 2, 3, 4);'''
+sql = generator.generateSQL(gameData)
+
+expected = '''INSERT OR IGNORE INTO Stats (test5, test2, test3, test4) VALUES (1, 2, 3, 4);'''
 
 areequal = sql == expected
 

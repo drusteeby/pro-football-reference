@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 import re
 import threading
 import queue
-from classes import SingleGameData
+import SingleGameData
 
 def read_url(url, queue):
     data = urllib.request.urlopen(url).read()
